@@ -34,12 +34,12 @@ create_host_and_user() {
   echo "-----------------------------------------------";
   echo "-- Creating Host, User, and Setting them up ...";
   echo "-----------------------------------------------";
-  sudo hostnamectl set-hostname "${hostname}"; # Creation of host
-  sudo useradd -m "${username}"; # Creation of user
-  sudo adduser "${username}" sudo; # Add user to sudo group
-  echo "${username}:${password}" | sudo chpasswd; # Set password of user
+  sudo hostnamectl set-hostname ggs; # Creation of host
+  sudo useradd -m user; # Creation of user
+  sudo adduser user sudo; # Add user to sudo group
+  echo "user:root" | sudo chpasswd; # Set password of user
   sudo sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd; # Change default shell from sh to bash
-  echo "-- Host, User created and configured having hostname '${hostname}', username '${username}', and password '${password}'.";
+  echo "-- Host, User created and configured having hostname 'ggs', username 'user', and password 'root'.";
 }
 
 # Important Environment by kevnigma
@@ -65,10 +65,12 @@ WorkNow() {
     sudo apt-get update;
     echo "-----------------------------------------";
     echo "-- Succesfully Script Remake By Kevnigma.";
+    echo "-- User : user | pass : root.";
     echo "-----------------------------------------";
     OpenEnvironment;
 }
 
 # --- main() ---
 WorkNow "$@";
+
 # --- end main() ---
