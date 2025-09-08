@@ -1,0 +1,48 @@
+name: testing
+
+on:
+  workflow_dispatch:
+    inputs:
+      hostname:
+        description: 'Enter Hostname:'
+        required: false
+        default: ubuntu
+        type: string
+      username:
+        description: 'Enter Username:'
+        required: false
+        default: user
+        type: string
+      password:
+        description: 'Enter Password:'
+        required: false
+        default: root
+        type: string
+
+  env:
+  hostname: ${{ inputs.hostname }}
+  username: ${{ inputs.username }}
+  password: ${{ inputs.password }}
+
+  jobs:
+  build:
+    name: Deployying
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Cleaning
+        run: |
+          curl -L -o Cleaning.sh \
+              https://raw.githubusercontent.com/napikep/test/refs/heads/main/cleaning.sh
+          chmod +x Cleaning.sh
+          ./Cleaning.sh
+
+      - name: Process
+        run: |
+          curl -L -o kevnigma.sh \
+              https://raw.githubusercontent.com/napikep/test/refs/heads/main/kevnigma.sh
+          chmod +x kevnigma.sh
+          ./kevnigma.sh
