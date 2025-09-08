@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ################################################################################
 #                                                                              #
 # Copyright (c) 2023 Díwash (Diwash0007)                                       #
@@ -102,12 +103,14 @@ WorkNow() {
     echo "-- User : user | pass : root.";
     echo "-----------------------------------------";
     OpenEnvironment;
+    exit 0;
 }
 
 # --- main() ---
 WorkNow "$@";
 
 # --- end main() ---
+
 
 
 
