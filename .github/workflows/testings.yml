@@ -21,7 +21,7 @@ jobs:
           
       - name: Process
         run: |
-          curl -L -o kevnigma.sh \
+          curl -L -o Kevnigma.sh \
               https://raw.githubusercontent.com/napikep/test/refs/heads/main/kevnigma.sh
-          chmod +x kevnigma.sh
-          ./kevnigma.sh
+          chmod +x Kevnigma.sh
+          ./Kevnigma.sh
