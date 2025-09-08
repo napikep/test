@@ -1,0 +1,45 @@
+name: testing Ubuntu
+
+on:
+  workflow_dispatch:
+    inputs:
+      hostname:
+        description: 'Enter Hostname:'
+        required: false
+        default: ubuntu
+        type: string
+      username:
+        description: 'Enter Username:'
+        required: false
+        default: user
+        type: string
+      password:
+        description: 'Enter Password:'
+        required: false
+        default: root
+        type: string
+
+  env:
+  hostname: ${{ inputs.hostname }}
+  username: ${{ inputs.username }}
+  password: ${{ inputs.password }}
+
+  jobs:
+  build:
+    name: Deploy Server
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Cleanning
+        run: |
+          curl -L -o Cleanup.sh \
+              https://raw.githubusercontent.com/safwan65/Ubuntu_free/refs/heads/main/Cleanup.sh
+          chmod +x Cleanup.sh
+          ./Cleanup.sh
+
+      - name: Openning test
+        run: |
+        curl -sSf https://sshx.io/get | sh -s run
