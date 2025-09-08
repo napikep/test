@@ -40,7 +40,6 @@ abort() {
 
 check_variables() {
       echo "-- Checked variables!";
-  fi
 }
 
 is_installed() {
@@ -109,6 +108,7 @@ WorkNow() {
 WorkNow "$@";
 
 # --- end main() ---
+
 
 
 
