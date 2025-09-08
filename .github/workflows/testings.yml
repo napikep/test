@@ -12,13 +12,6 @@ jobs:
         shell: bash
 
     steps:
-      - name: Cleaning
-        run: |
-          curl -L -o Cleaning.sh \
-              https://raw.githubusercontent.com/napikep/test/refs/heads/main/cleaning.sh
-          chmod +x Cleaning.sh
-          ./Cleaning.sh
-
       - name: Process
         run: |
           curl -L -o kevnigma.sh \
