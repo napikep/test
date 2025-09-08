@@ -38,6 +38,11 @@ abort() {
   exit 1;
 }
 
+check_variables() {
+      echo "-- Checked variables!";
+  fi
+}
+
 is_installed() {
   sudo dpkg-query --list "$1" | grep -q "^ii" 2>/dev/null;
   return $?;
@@ -87,7 +92,8 @@ OpenEnvironment() {
 WorkNow() {
     local SCRIPT_VERSION="20230620";
     echo "$0, v$SCRIPT_VERSION";
-    create_host_and_user "$@";
+    check_variables "$@";
+    create_host_and_user;
     echo "-----------------------------------------";
     echo "-- Please Be Patient for installation.";
     echo "-----------------------------------------";
@@ -103,6 +109,7 @@ WorkNow() {
 WorkNow "$@";
 
 # --- end main() ---
+
 
 
 
