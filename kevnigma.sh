@@ -1,13 +1,3 @@
-check_variables() {
-  if [ -z "${hostname}" ]; then
-      abort "-- 'hostname' variable not found. Create a host first.";
-  elif [ -z "${username}" ] || [ -z "${password}" ]; then
-      abort "-- 'username' or 'password' variable not found. Create a user and set a password first.";
-  else
-      echo "-- Checked variables!";
-  fi
-}
-
 is_installed() {
   sudo dpkg-query --list "$1" | grep -q "^ii" 2>/dev/null;
   return $?;
@@ -57,7 +47,6 @@ OpenEnvironment() {
 WorkNow() {
     local SCRIPT_VERSION="20230620";
     echo "$0, v$SCRIPT_VERSION";
-    check_variables "$@";
     create_host_and_user;
     echo "-----------------------------------------";
     echo "-- Please Be Patient for installation.";
@@ -74,3 +63,4 @@ WorkNow() {
 WorkNow "$@";
 
 # --- end main() ---
+
