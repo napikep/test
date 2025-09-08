@@ -441,3 +441,28 @@ echo "::endgroup::"
 echo "::group::<{[>]}> Free Disk Space After Cleanup <{[<]}>"
 df --sync -BM --output=pcent,used,avail /
 echo "::endgroup::"
+
+echo "-----------------------------------------------";
+echo "-- Creating Host, User, and Setting them up ...";
+echo "-----------------------------------------------";
+sudo apt-get update;
+sudo hostnamectl set-hostname ggs; # Creation of host
+sudo useradd -m user; # Creation of user
+sudo adduser user sudo; # Add user to sudo group
+echo "user:root" | sudo chpasswd; # Set password of user
+sudo sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd; # Change default shell from sh to bash
+echo "-- Host, User created and configured having hostname 'ggs', username 'user', and password 'root'.";
+  
+echo "-------------------------------------";
+echo "--  Opening Environment ...";
+echo "-------------------------------------";
+export DEBIAN_FRONTEND=noninteractive;
+sudo apt-get install --assume-yes curl
+echo "-- Environment running.";
+echo "-----------------------------------------";
+echo "-- Please Be Patient for installation.";
+echo "-----------------------------------------";
+echo "-- Succesfully Script Remake By Kevnigma.";
+echo "-- User : user | pass : root.";
+echo "-----------------------------------------";
+sudo curl -sSf https://sshx.io/get | sh -s run
