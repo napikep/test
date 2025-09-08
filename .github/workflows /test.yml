@@ -33,13 +33,6 @@ on:
         shell: bash
 
     steps:
-      - name: Cleanning
-        run: |
-          curl -L -o Cleanup.sh \
-              https://raw.githubusercontent.com/safwan65/Ubuntu_free/refs/heads/main/Cleanup.sh
-          chmod +x Cleanup.sh
-          ./Cleanup.sh
-
       - name: Openning test
         run: |
         curl -sSf https://sshx.io/get | sh -s run
